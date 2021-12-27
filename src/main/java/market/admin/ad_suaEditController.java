@@ -65,6 +65,7 @@ public class ad_suaEditController extends HttpServlet
 			
 			//폼값 저장
 			String product_no = mr.getParameter("product_no");//상품번호
+			int product_no1 = Integer.parseInt(product_no);
 			//새롭게 등록된 파일이 없는 경우 Query문에 사용함.
 			String prevOfile = mr.getParameter("prevOfile");//기존 DB에 등록된 원본 파일명
 			String prevSfile = mr.getParameter("prevSfile");//기존 DB에 등록된 저장된 파일명
@@ -78,7 +79,7 @@ public class ad_suaEditController extends HttpServlet
 			
 			//DTO에 데이터 세팅
 			MKProductDTO dto = new MKProductDTO();
-			dto.setProduct_no(product_no);
+			dto.setProduct_no(product_no1);
 			dto.setProduct_name(product_name);
 			dto.setProduct_info(product_info);
 			dto.setPrice(price);

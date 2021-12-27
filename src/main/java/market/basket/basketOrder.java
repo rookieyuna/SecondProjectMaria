@@ -22,7 +22,9 @@ public class basketOrder extends HttpServlet{
 		MKOrdersDAO dao = new MKOrdersDAO();
 		
 		String product_no = req.getParameter("product_no");
+		System.out.println("as111df :"+product_no+"aaaa");
 		int product_no1 = Integer.parseInt(product_no);
+		System.out.println("no1"+product_no1);
 		String addr = req.getParameter("addr");
 		String credit = req.getParameter("credit");
 		String price = req.getParameter("total_price");
