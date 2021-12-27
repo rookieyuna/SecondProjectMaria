@@ -3,14 +3,14 @@ package market.basket;
 
 public class CartDTO {
 
-	private String cart_no;
+	private int cart_no;
 	private int count_num;
 	private int total_price;
-	private String product_no;
+	private int product_no;
 	private String id;
 	private String product_sfile;
 	private String milage;
-	private String price;
+	private String price; 
 	private String product_name;
 
 	
@@ -38,10 +38,11 @@ public class CartDTO {
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
 	}
-	public String getCart_no() {
+
+	public int getCart_no() {
 		return cart_no;
 	}
-	public void setCart_no(String cart_no) {
+	public void setCart_no(int cart_no) {
 		this.cart_no = cart_no;
 	}
 	public int getCount_num() {
@@ -57,10 +58,11 @@ public class CartDTO {
 	public void setTotal_price(int total_price) {
 		this.total_price = total_price;
 	}
-	public String getProduct_no() {
+	
+	public int getProduct_no() {
 		return product_no;
 	}
-	public void setProduct_no(String product_no) {
+	public void setProduct_no(int product_no) {
 		this.product_no = product_no;
 	}
 	public String getId() {

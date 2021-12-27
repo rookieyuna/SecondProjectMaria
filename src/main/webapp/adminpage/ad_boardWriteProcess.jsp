@@ -18,7 +18,7 @@ String title = request.getParameter("title");
 String content = request.getParameter("content");
 
 
-BoardDTO dto = new BoardDTO();
+BoardDTO dto = new BoardDTO(); 
 dto.setId(userid);
 dto.setName(name);
 dto.setEmail(email);

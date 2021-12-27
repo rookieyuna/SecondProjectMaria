@@ -5,8 +5,8 @@ import java.text.DecimalFormat;
 public class MKOrdersDTO {
 
 	private int order_no;
-	private String product_no;
-	private String cart_no;
+	private int product_no;
+	private int cart_no;
 	private String id;
 	private String addr;
 	private String credit;
@@ -22,20 +22,18 @@ public class MKOrdersDTO {
 	public void setOrder_no(int order_no) {
 		this.order_no = order_no;
 	}
-	public String getProduct_no()
-	{
+	
+
+	public int getProduct_no() {
 		return product_no;
 	}
-	public void setProduct_no(String product_no)
-	{
+	public void setProduct_no(int product_no) {
 		this.product_no = product_no;
 	}
-	public String getCart_no()
-	{
+	public int getCart_no() {
 		return cart_no;
 	}
-	public void setCart_no(String cart_no)
-	{
+	public void setCart_no(int cart_no) {
 		this.cart_no = cart_no;
 	}
 	public String getId()

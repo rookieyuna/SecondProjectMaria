@@ -16,7 +16,7 @@ public class basketUpdateDelete extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String product = req.getParameter("zlag");
-		
+		int product1 = Integer.parseInt(product);
 		/* String product_no = req.getParameter("product_"+product); */
 		String count_num = req.getParameter("count_"+product);
 		String total = req.getParameter("total_"+product);
@@ -32,7 +32,7 @@ public class basketUpdateDelete extends HttpServlet{
 		CartDTO dto = new CartDTO();
 
 		dto.setCount_num(count);
-		dto.setProduct_no(product);  
+		dto.setProduct_no(product1);  
 		dto.setTotal_price(total_price);
 		
 		dto.setProduct_sfile(product_sfile);

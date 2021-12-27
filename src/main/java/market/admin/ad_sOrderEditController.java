@@ -48,8 +48,11 @@ public class ad_sOrderEditController extends HttpServlet
 	{
 		//수정페이지에서 새롭게 입력한 폼값
 		String order_no = req.getParameter("order_no");
-		int order_no1 = Integer.parseInt(order_no);		String product_no = req.getParameter("product_no");
+		int order_no1 = Integer.parseInt(order_no);		
+		String product_no = req.getParameter("product_no");
+		int product_no1 = Integer.parseInt(product_no);
 		String cart_no = req.getParameter("cart_no");
+		int cart_no1 = Integer.parseInt(cart_no);
 		String id = req.getParameter("id");
 		String addr = req.getParameter("addr");
 		String credit = req.getParameter("credit");
@@ -61,8 +64,8 @@ public class ad_sOrderEditController extends HttpServlet
 		//DTO에 데이터 세팅
 		MKOrdersDTO dto = new MKOrdersDTO();
 		dto.setOrder_no(order_no1);
-		dto.setProduct_no(product_no);
-		dto.setCart_no(cart_no);
+		dto.setProduct_no(product_no1);
+		dto.setCart_no(cart_no1);
 		dto.setId(id);
 		dto.setAddr(addr);
 		dto.setCredit(credit);

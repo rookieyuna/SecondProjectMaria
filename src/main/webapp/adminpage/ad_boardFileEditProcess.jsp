@@ -19,7 +19,7 @@
 		
 		MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxPostSize, encoding);
 		
-		String fileName = mr.getFilesystemName("attachedFile");
+		String fileName = mr.getFilesystemName("attachedFile"); 
 		
 		String userid = session.getAttribute("UserId").toString();
 		String title = mr.getParameter("title");

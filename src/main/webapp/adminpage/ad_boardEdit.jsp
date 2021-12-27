@@ -11,7 +11,7 @@
 String cate = request.getParameter("cate");
 String num = request.getParameter("num");
 
-BoardDAO dao = new BoardDAO(); //DB연결
+BoardDAO dao = new BoardDAO(); //DB연결 
 BoardDTO dto = dao.selectView(num);
 
 dao.close();

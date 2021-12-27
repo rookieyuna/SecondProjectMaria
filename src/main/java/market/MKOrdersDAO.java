@@ -36,10 +36,7 @@ public class MKOrdersDAO extends DBConnPool{
     // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
     public List<MKOrdersDTO> selectListPage(Map<String,Object> map) {
         List<MKOrdersDTO> orderlists = new Vector<MKOrdersDTO>();
-        String query = ""
-        			 + "SELECT * FROM ( "
-                     + "    SELECT Tb.*, ROWNUM rNum FROM ( "
-                     + "        SELECT * FROM orders ";
+        String query =  "SELECT * FROM orders ";
 
         if (map.get("searchWord") != null)
         {
@@ -47,10 +44,7 @@ public class MKOrdersDAO extends DBConnPool{
                    + " LIKE '%" + map.get("searchWord") + "%' ";
         }
 
-        query += "        ORDER BY order_no DESC "
-               + "    ) Tb "
-               + " ) "
-               + " WHERE (rNum BETWEEN ? AND ? )";
+        query += " ORDER BY order_no DESC LIMIT ?,?";
 
         try {
             psmt = con.prepareStatement(query);
@@ -62,8 +56,8 @@ public class MKOrdersDAO extends DBConnPool{
             	MKOrdersDTO dto = new MKOrdersDTO();
             	
                 dto.setOrder_no(rs.getInt(1));
-                dto.setProduct_no(rs.getString(2));
-                dto.setCart_no(rs.getString(3));
+                dto.setProduct_no(rs.getInt(2));
+                dto.setCart_no(rs.getInt(3));
                 dto.setId(rs.getString(4));
                 dto.setAddr(rs.getString(5));
                 dto.setCredit(rs.getString(6));
@@ -93,8 +87,8 @@ public class MKOrdersDAO extends DBConnPool{
 
     		if (rs.next()) {//결과를 DTO에 저장 
     			dto.setOrder_no(rs.getInt(1));
-                dto.setProduct_no(rs.getString(2));
-                dto.setCart_no(rs.getString(3));
+                dto.setProduct_no(rs.getInt(2));
+                dto.setCart_no(rs.getInt(3));
                 dto.setId(rs.getString(4));
                 dto.setAddr(rs.getString(5));
                 dto.setCredit(rs.getString(6));
@@ -117,13 +111,13 @@ public class MKOrdersDAO extends DBConnPool{
         int result = 0;
         try {
             String query = "INSERT INTO orders ( "
-                         + " order_no, product_no, cart_no, id, "
+                         + "  product_no, cart_no, id, "
                          + " addr, credit, order_state, total_price, total_count) "
                          + " VALUES ( "
-                         + " seq_board_num.NEXTVAL,?,?,?,?,?,?,?,?)";
+                         + " ?,?,?,?,?,?,?,?)";
             psmt = con.prepareStatement(query);
-            psmt.setString(1, dto.getProduct_no());
-            psmt.setString(2, dto.getCart_no());
+            psmt.setInt(1, dto.getProduct_no());
+            psmt.setInt(2, dto.getCart_no());
             psmt.setString(3, dto.getId());
             psmt.setString(4, dto.getAddr());
             psmt.setString(5, dto.getCredit());
@@ -173,8 +167,8 @@ public class MKOrdersDAO extends DBConnPool{
   			
   			psmt = con.prepareStatement(query);
   			
-  			psmt.setString(1, dto.getProduct_no());
-            psmt.setString(2, dto.getCart_no());
+  			psmt.setInt(1, dto.getProduct_no());
+            psmt.setInt(2, dto.getCart_no());
             psmt.setString(3, dto.getId());
             psmt.setString(4, dto.getAddr());
             psmt.setString(5, dto.getCredit());

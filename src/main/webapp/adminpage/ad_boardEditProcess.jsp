@@ -16,7 +16,7 @@ String content = request.getParameter("content");
 
 //DTO객체에 입력값 추가하기 
 BoardDTO dto = new BoardDTO();
-dto.setNum(num);
+dto.setNum(num); 
 /* dto.setPass(pass); */
 dto.setName(name);
 dto.setEmail(email);

@@ -29,25 +29,27 @@ public class basketOrder2 extends HttpServlet{
 		{
 			/* System.out.println("i:"+i); */
 			String product_no = req.getParameter("product_no_"+i);
+			int product_no1 = Integer.parseInt(product_no);
 			String addr = req.getParameter("addr");
 			String credit = req.getParameter("credit");
 			String price = req.getParameter("total_price_"+i);
 			String count = req.getParameter("total_count_"+i);
 			String cart_no = req.getParameter("cart_no_"+i);
+			int cart_no1 = Integer.parseInt(cart_no);
 			
 			int total_price = Integer.valueOf(price);
 			int total_count = Integer.valueOf(count);
 			
 			MKOrdersDTO dto = new MKOrdersDTO();
 			
-			dto.setProduct_no(product_no);
+			dto.setProduct_no(product_no1);
 			dto.setAddr(addr);
 			dto.setCredit(credit);
 			dto.setTotal_count(total_count);
 			dto.setTotal_price(total_price);
 			dto.setId(id);
 			dto.setOrder_state("상품준비중");
-			dto.setCart_no(cart_no);
+			dto.setCart_no(cart_no1);
 			
 			MKOrdersDAO dao = new MKOrdersDAO();
 			CartDAO dao1 = new CartDAO();

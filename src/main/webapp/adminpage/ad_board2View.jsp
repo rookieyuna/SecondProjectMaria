@@ -20,7 +20,7 @@
 			form.submit(); // form값 전송
 		}
 	}
-</script>
+</script> 
 
 <!DOCTYPE html>
 <html lang="en">

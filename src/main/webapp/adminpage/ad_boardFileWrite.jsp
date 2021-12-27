@@ -15,7 +15,7 @@ String cate = request.getParameter("cate");
 String userid = session.getAttribute("UserId").toString();
 
 BoardDAO dao = new BoardDAO();
-BoardDTO dto = dao.getId(userid);
+BoardDTO dto = dao.getId(userid); 
 
 %>
 

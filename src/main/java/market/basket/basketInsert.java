@@ -44,6 +44,7 @@ public class basketInsert extends HttpServlet{
 		
 		String count_num = req.getParameter("count_");
 		String product_no = req.getParameter("product_");
+		int product_no1 = Integer.parseInt(product_no);
 		String price = req.getParameter("price1_");
 		String product_sfile = req.getParameter("product_sfile");
 		String product_name = req.getParameter("product_name");
@@ -66,7 +67,7 @@ public class basketInsert extends HttpServlet{
 		
 		CartDTO dto = new CartDTO();
 		dto.setCount_num(count);
-		dto.setProduct_no(product_no);  
+		dto.setProduct_no(product_no1);  
 		dto.setTotal_price(total_price);
 		
 		dto.setProduct_sfile(product_sfile);

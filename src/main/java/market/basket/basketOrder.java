@@ -22,6 +22,7 @@ public class basketOrder extends HttpServlet{
 		MKOrdersDAO dao = new MKOrdersDAO();
 		
 		String product_no = req.getParameter("product_no");
+		int product_no1 = Integer.parseInt(product_no);
 		String addr = req.getParameter("addr");
 		String credit = req.getParameter("credit");
 		String price = req.getParameter("total_price");
@@ -33,16 +34,16 @@ public class basketOrder extends HttpServlet{
 		HttpSession session = req.getSession();
 		String id = (String)session.getAttribute("UserId");
 		
-		MKOrdersDTO dto = new MKOrdersDTO();
+		MKOrdersDTO dto = new MKOrdersDTO(); 
 		
-		dto.setProduct_no(product_no);
+		dto.setProduct_no(product_no1);
 		dto.setAddr(addr);
 		dto.setCredit(credit);
 		dto.setTotal_count(total_count);
 		dto.setTotal_price(total_price);
 		dto.setId(id);
 		dto.setOrder_state("상품준비중");
-		dto.setCart_no("nocart");
+		dto.setCart_no(0);
 		
 		int iResult = dao.insertOrder(dto);
 		dao.close();
