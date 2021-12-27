@@ -19,6 +19,11 @@ public class MKProductDAO extends DBConnPool{
         int totalCount = 0;
         String query = "SELECT COUNT(*) FROM product";
        
+		if(map.get("searchWord") != null) {
+			query += " WHERE " + map.get("searchField") + " "
+					+ " LIKE '%" + map.get("searchWord") + "%'";
+		}
+		
         try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(query);
@@ -36,32 +41,25 @@ public class MKProductDAO extends DBConnPool{
     // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
     public List<MKProductDTO> selectListPage(Map<String,Object> map) {
         List<MKProductDTO> board = new Vector<MKProductDTO>();
-        String query = ""
-        			 + "SELECT * FROM ( "
-                     + "    SELECT Tb.*, ROWNUM rNum FROM ( "
-                     + "        SELECT * FROM product ";
+        String query = " SELECT * FROM product ";
 
-        if (map.get("searchWord") != null)
-        {
+        if (map.get("searchWord") != null){
             query += " WHERE " + map.get("searchField")
                    + " LIKE '%" + map.get("searchWord") + "%' ";
         }
 
-        query += "        ORDER BY product_no DESC "
-               + "    ) Tb "
-               + " ) "
-               + " WHERE (rNum BETWEEN ? AND ? )";
+        query += " ORDER BY product_no DESC LIMIT ?, ? ";
 
         try {
             psmt = con.prepareStatement(query);
-            psmt.setString(1, map.get("start").toString());
-            psmt.setString(2, map.get("end").toString());
+            psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+            psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
             rs = psmt.executeQuery();
 
             while (rs.next()) {
             	MKProductDTO dto = new MKProductDTO();
             	
-                dto.setProduct_no(rs.getString(1));
+                dto.setProduct_no(rs.getInt(1));
                 dto.setProduct_name(rs.getString(2));
                 dto.setPrice(rs.getInt(3));
                 dto.setMilage(rs.getInt(4));
@@ -88,7 +86,7 @@ public class MKProductDAO extends DBConnPool{
     		rs = psmt.executeQuery(); 
 
     		if (rs.next()) {//결과를 DTO에 저장 
-    			dto.setProduct_no(rs.getString(1));
+    			dto.setProduct_no(rs.getInt(1));
                 dto.setProduct_name(rs.getString(2));
                 dto.setPrice(rs.getInt(3));
                 dto.setMilage(rs.getInt(4));
@@ -111,10 +109,10 @@ public class MKProductDAO extends DBConnPool{
         int result = 0;
         try {
             String query = "INSERT INTO product ( "
-                         + " product_no, product_name, product_info, price, "
+                         + " product_name, product_info, price, "
                          + " milage, product_ofile, product_sfile) "
                          + " VALUES ( "
-                         + " seq_board_num.NEXTVAL,?,?,?,?,?,?)";
+                         + " ?,?,?,?,?,?)";
             psmt = con.prepareStatement(query);
             psmt.setString(1, dto.getProduct_name());
             psmt.setString(2, dto.getProduct_info());
@@ -174,7 +172,7 @@ public class MKProductDAO extends DBConnPool{
   			psmt.setInt(4, dto.getMilage());
   			psmt.setString(5, dto.getProduct_ofile());
   			psmt.setString(6, dto.getProduct_sfile());
-  			psmt.setString(7, dto.getProduct_no());
+  			psmt.setInt(7, dto.getProduct_no());
   			
   			//쿼리 실행
   			result = psmt.executeUpdate();
@@ -198,7 +196,7 @@ public class MKProductDAO extends DBConnPool{
             rs = psmt.executeQuery();
             
             if (rs.next()) {
-                dto.setProduct_no(rs.getString(1));
+                dto.setProduct_no(rs.getInt(1));
                 dto.setProduct_name(rs.getString(2));
                 dto.setPrice(rs.getInt(3));
                 dto.setMilage(rs.getInt(4));

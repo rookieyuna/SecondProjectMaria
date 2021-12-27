@@ -2,7 +2,7 @@ package market;
 
 public class marketApplicationDTO {
 	
-	private String idx;
+	private int idx;
 	private String name;
 	private String address;
 	private String phone1;
@@ -22,10 +22,10 @@ public class marketApplicationDTO {
 	
 	
 	
-	public String getIdx() {
+	public int getIdx() {
 		return idx;  
 	}
-	public void setIdx(String idx) {
+	public void setIdx(int idx) {
 		this.idx = idx;
 	}
 	public String getName() {

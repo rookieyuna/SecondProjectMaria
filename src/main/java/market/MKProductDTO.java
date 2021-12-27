@@ -4,7 +4,7 @@ import java.text.DecimalFormat;
 
 public class MKProductDTO {
 
-	private String product_no;
+	private int product_no;
 	private String product_name;
 	private int price;
 	private int milage;
@@ -13,10 +13,10 @@ public class MKProductDTO {
 	private String product_sfile;
 	DecimalFormat formatter = new DecimalFormat("###,###");
 	
-	public String getProduct_no() {
+	public int getProduct_no() {
 		return product_no;
 	}
-	public void setProduct_no(String product_no) {
+	public void setProduct_no(int product_no) {
 		this.product_no = product_no;
 	}
 	public String getProduct_name() {
