@@ -37,19 +37,19 @@
   </filter-mapping>
     
      <context-param>
-    <param-name>OracleDriver</param-name>
-    <param-value>oracle.jdbc.OracleDriver</param-value>
+    <param-name>MariaDBDriver</param-name>
+    <param-value>org.mariadb.jdbc.Driver</param-value>
   </context-param>
   <context-param>
-    <param-name>OracleURL</param-name>
-    <param-value>jdbc:oracle:thin:@localhost:1521:xe</param-value>
+    <param-name>MariaDBURL</param-name>
+    <param-value>jdbc:mariadb://127.0.0.1:3306/secondpj_db</param-value>
   </context-param>
   <context-param>
-    <param-name>OracleId</param-name>
-    <param-value>secondpj</param-value>
+    <param-name>MariaDBId</param-name>
+    <param-value>secondpj_user</param-value>
   </context-param>
   <context-param>
-    <param-name>OraclePwd</param-name>
+    <param-name>MariaDBPwd</param-name>
     <param-value>1234</param-value>
   </context-param>
     

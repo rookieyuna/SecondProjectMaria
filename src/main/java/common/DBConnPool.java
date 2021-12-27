@@ -21,7 +21,7 @@ public class DBConnPool {
 	            Context initCtx = new InitialContext();
 	           
 	            Context ctx = (Context)initCtx.lookup("java:comp/env");
-	            DataSource source = (DataSource)ctx.lookup("dbcp_myoracle");
+	            DataSource source = (DataSource)ctx.lookup("dbcp_mariadb");
 	            con = source.getConnection();
 	            System.out.println("DB 커넥션 풀 연결 성공");
 	        }

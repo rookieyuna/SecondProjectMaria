@@ -18,10 +18,10 @@ public class JDBConnect {
 	public JDBConnect() {
 		try {
 			//오라클 드라이버 로드
-			Class.forName("oracle.jdbc.OracleDriver");
+			Class.forName("org.mariadb.jdbc.Driver");
 			//커넥션URL생성
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String id = "secondpj";
+			String url = "jdbc:mariadb://127.0.0.1:3306/secondpj_db";
+			String id = "secondpj_user";
 			String pwd = "1234";
 			con = DriverManager.getConnection(url, id, pwd);
 			
@@ -50,10 +50,10 @@ public class JDBConnect {
 	public JDBConnect(ServletContext application) {
 		
 		//web.xml에 저장된 오라클 접속정보를 얻어온다. 
-		String driver = application.getInitParameter("OracleDriver");
-		String url = application.getInitParameter("OracleURL");
-		String id = application.getInitParameter("OracleId");
-		String pwd = application.getInitParameter("OraclePwd");
+		String driver = application.getInitParameter("MariaDBDriver");
+		String url = application.getInitParameter("MariaDBURL");
+		String id = application.getInitParameter("MariaDBId");
+		String pwd = application.getInitParameter("MariaDBPwd");
 		try {
 			// JDBC 드라이버 로드
 			Class.forName(driver);
