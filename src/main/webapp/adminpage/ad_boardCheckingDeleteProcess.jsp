@@ -9,7 +9,7 @@
 	String cate = request.getParameter("cate");
 	
 	BoardDAO dao = new BoardDAO();
-	int res = dao.deletePost(bd_no);
+	int res = dao.deletePost(bd_no); 
 	dao.close();
 	
 	if(res == bd_no.length){

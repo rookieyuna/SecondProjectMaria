@@ -20,7 +20,7 @@ BoardDTO dto = dao.getId(userid);
 
 dao.close();
 %>
-<script type="text/javascript">
+<script type="text/javascript"> 
 function validateForm(form) {
 	if(form.id.value == ""){
 		alert("작성자를 입력하세요.");

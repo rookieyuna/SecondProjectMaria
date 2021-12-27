@@ -20,7 +20,7 @@ dao.close();
 
  <script type="text/javascript">
 	 function deletePost(){
-		var confirmed = confirm("정말로 삭제하시겠습니까?");
+		var confirmed = confirm("정말로 삭제하시겠습니까?"); 
 		if(confirmed){
 			var form = document.writeFrm;
 			form.method = "get"; // 전송방식을 post로 설정
