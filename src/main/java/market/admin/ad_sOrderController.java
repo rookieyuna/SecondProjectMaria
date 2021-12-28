@@ -64,8 +64,8 @@ public class ad_sOrderController extends HttpServlet
 			pageNum = Integer.parseInt(pageTemp); //정수로 변경한 후 저장
 
 		//게시물의 구간을 계산한다.
-		int start = (pageNum -1) * pageSize +1; //구간의 시작
-		int end = pageNum * pageSize; //구간의 끝
+		int start = (pageNum -1) * pageSize; //구간의 시작
+		int end = pageSize; //구간의 끝
 		map.put("start", start); //Map 컬렉션에 저장 후 DAO로 전달함
 		map.put("end", end);
 		/***********페이지 처리 end************/

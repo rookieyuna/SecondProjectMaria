@@ -62,8 +62,8 @@ public class ListController extends HttpServlet{
 		
 		
 		//게시물의 구간을 계산한다.
-		int start = (pageNum -1) * pageSize +1; //구간의 시작
-		int end = pageNum * pageSize;	//구간의 끝
+		int start = (pageNum -1) * pageSize; //구간의 시작
+		int end = pageSize;	//구간의 끝
 		map.put("start", start); //Map컬렉션에 저장후 DAO로 전달
 		map.put("end", end); 
 		/***** 페이지 처리 end ******/
