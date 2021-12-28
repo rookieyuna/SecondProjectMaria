@@ -57,8 +57,8 @@ public class ad_requstController extends HttpServlet{
             pageNum = Integer.parseInt(pageTemp); //정수로 변경한 후 저장 
 
         //게시물의 구간을 계산
-        int start = (pageNum - 1) * pageSize + 1;   
-        int end = pageNum * pageSize;  
+        int start = (pageNum - 1) * pageSize;   
+        int end = pageSize;  
         map.put("start", start);
         map.put("end", end);
         /* 페이지 처리 end */
