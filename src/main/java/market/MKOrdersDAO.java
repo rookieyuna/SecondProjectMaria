@@ -48,8 +48,8 @@ public class MKOrdersDAO extends DBConnPool{
 
         try {
             psmt = con.prepareStatement(query);
-            psmt.setString(1, map.get("start").toString());
-            psmt.setString(2, map.get("end").toString());
+            psmt.setInt(1, Integer.parseInt(map.get("start").toString()));
+            psmt.setInt(2, Integer.parseInt(map.get("end").toString()));
             rs = psmt.executeQuery();
 
             while (rs.next()) {
