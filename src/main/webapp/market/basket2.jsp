@@ -119,7 +119,7 @@ function goOrder(){
 						<c:otherwise>
 							<tr>
 								<td><input type="checkbox" name="" value="" />
-								<input type="hidden" name="product_no" value="${dto.product_no } "/></td>
+								<input type="hidden" name="product_no" value="${dto.product_no }"/></td>
 								<td><img src="../images/market/${dto.product_sfile }" width="50px" height="50px"/></td>
 								<td>${ dto.product_name }</td>
 								<td><fmt:formatNumber value="${ dto.price }" pattern="#,###"/>원

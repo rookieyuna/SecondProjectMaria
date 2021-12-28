@@ -225,18 +225,16 @@ public class MemberDAO extends JDBConnect {
 		List<MemberDTO> memberBox = new Vector<MemberDTO>();
 		
 		try {
-		//실제쿼리: SELECT * FROM (SELECT tb.*, ROWNUM rNum FROM member tb where name='관리자' Order By id) where rNum Between 1 and 3;
 			
-			String query = "SELECT * FROM ( "
-					+ " SELECT tb.*, ROWNUM rNum FROM member tb  ";
+			String query = "SELECT * FROM member ";
 			
 				if(map.get("searchWord") != null) {
 					query += " WHERE "+ map.get("searchField")
 						+ " LIKE '%" + map.get("searchWord") + "%' ";
 				}
 			
-				query += " 		ORDER BY id asc) "
-						+ " WHERE rNum BETWEEN ? AND ?";
+				query += " 		ORDER BY id asc LIMIT ?, ?";
+
 				
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, map.get("start").toString());
