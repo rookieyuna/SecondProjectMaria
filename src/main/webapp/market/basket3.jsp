@@ -133,7 +133,7 @@ String[] emailArr = dto.getEmail().split("@");
 							<tr>
 								<td><input type="checkbox" name="" value="" />
 								<input type="hidden" name="zlag" id="zlag" value="${status.count }"/>
-								<input type="hidden" name="product_no_${status.count }" value="${row.product_no } "/></td>
+								<input type="hidden" name="product_no_${status.count }" value="${row.product_no }"/></td>
 								<td><img src="../images/market/${row.product_sfile }" width="50px" height="50px"/></td>
 								<td>${ row.product_name }</td>
 								<td><span id ="price_${row.product_no }">${ row.price }</span></td>
