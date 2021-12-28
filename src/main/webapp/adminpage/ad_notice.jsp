@@ -1,14 +1,19 @@
 <%@page import="utils.BoardPage"%>
 <%@page import="membership.MemberDTO"%>
+<%@page import="membership.MemberDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
-<%@page import="membership.MemberDAO"%>
+<%@page import="board.BoardDTO"%>
+<%@page import="board.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%
-	MemberDAO dao = new MemberDAO();
+	
+	String cate = request.getParameter("cate");	
+	String cateUrl = request.getRequestURI() + "?cate=" + cate;
+	
+	BoardDAO dao = new BoardDAO();
 	Map<String, Object> param = new HashMap<String, Object>();
 	
 	String searchField = request.getParameter("searchField");
@@ -17,9 +22,10 @@
 	if(searchWord != null){
 		param.put("searchField", searchField);
 		param.put("searchWord", searchWord);
+		param.put("cate", cate);
 	}
 	
-	int totalCount = dao.selectCount(param);
+	int totalCount = dao.selectCount(param, cate);
 	int pageSize = 10;
 	int blockPage = 5;
 	int totalPage = (int)Math.ceil((double)totalCount / pageSize);
@@ -34,9 +40,10 @@
 	param.put("start", start);
 	param.put("end", end);
 	
-	List<MemberDTO> memberLists = dao.selectList(param);
+	List<BoardDTO> boardLists = dao.selectList(param, cate);
 	dao.close();
 %>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +55,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+	
     <title>마포구립 장애인직업재활센터 관리자 페이지에 오신 것을 환영합니다.</title>
 
     <!-- Custom fonts for this template -->
@@ -63,14 +70,27 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-	
     <!-- 211218 KBS ADD -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    
+    <!-- 211222 KBS ADD 체크박스 삭제를 위한 -->
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
+
+<script>
+$(function(){
+	$('#deletebtn').click(function(){
+		if($("input:checkbox[name=chk]:checked").length == 0){
+			alert("삭제할 항목을 체크해주세요");
+		}else{
+			$('#cleanlist').attr("action","/SecondProject/adminpage/ad_boardCheckingDeleteProcess.jsp").submit();			
+		}
+	})  		
+});
+</script>
 
 <body id="page-top">
 
@@ -99,11 +119,11 @@
 
             <!-- Heading -->
 
-			
-			<!-- 여어어어엉어어기기기기이이이이이이가가가가가 좌측메뉴(LNB)이다라라랄라라라랄-->
-            <%@ include file = "./include/ad_LNB_location.jsp" %>
-		
 
+            <!-- 여어어어엉어어기기기기이이이이이이가가가가가 좌측메뉴(LNB)이다라라랄라라라랄-->
+            <%@ include file = "./include/ad_LNB_location.jsp" %>
+            
+            
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -305,109 +325,107 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">사용자 관리</h1>
-                    <p class="mb-4">User Management</p>
+                    <h1 class="h3 mb-2 text-gray-800">공지사항 관리</h1>
+                    <p class="mb-4">BOARD MANAGEMENT - NOTICE</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">회원 정보</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">공지사항 정보</h6>
                         </div>
                         <div class="card-body">
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="boardCheckbox">
-                                            <input type="checkbox" id="checkedAll" class="form-check-input flex-shrink-0" style="font-size: 1.375em;">
-                                        </th>
-                                        <th>아이디</th>
-                                        <th>이름</th>
-                                        <th>이메일</th>
-                                        <!-- <th>우편번호</th>
-                                        <th>주소1</th>
-                                        <th>주소2</th> -->
-                                        <th>전화번호</th>
-                                        <th>핸드폰번호</th>
-                                        <th>회원등급</th>
-                                        <th>회원등록일</th>
-                                        <th>상세정보</th>
-                                    </tr>
-                                </thead>
-                                <!-- 테이블 가공 (회원 정보) -->
-                                <tbody>
-									<%
-									if(memberLists.isEmpty()){
-									%>
-									<tr>
-										<td colspan="12" align="center">등록된 회원정보가 없습니다.</td>
-									<tr>
-									<%
-									}else{
-										int virtualNum = 0;
-										int countNum = 0;
-										for(MemberDTO dto : memberLists){
-											virtualNum = totalCount - (((pageNum - 1) * pageSize) + countNum++);
-									%>
-									<%-- <tr onclick="location.href='member_mod.jsp?id==<%= dto.getId() %>'"> --%>
-									<tr>
-										<td><input type="checkbox" class="form-check-input flex-shrink-0" style="font-size: 1.375em;" name="chk"></td>
-										<td><%= dto.getId() %></td>
-										<td><%= dto.getName() %></td>
-										<td><%= dto.getEmail() %></td>
-										<%-- <td><%= dto.getPostcode() %></td>
-										<td><%= dto.getAddr1() %></td>
-										<td><%= dto.getAddr2() %></td> --%>
-										<td><%= dto.getPhone1() %></td>
-										<td><%= dto.getPhone2() %></td>
-										<td><%= dto.getIdentity() %></td>
-										<td><%= dto.getRegidate() %></td>
-										<td><button class="btn" type="button" onclick="location.href='ad_member_mod.jsp?user_id=<%= dto.getId() %>'"><i class="bi bi-pencil-square"></i></button></td>
-									</tr>
-									<%
-										}
-									}
-									%>
-								</tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <form method="post" id="cleanlist"><!-- 삭제처리할때 form -->                        
+                                <input type="hidden" name="cate" value="<%= cate %>" />
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="boardCheckbox">
+                                                <input type="checkbox" id="checkedAll" class="form-check-input flex-shrink-0" style="font-size: 1.375em;">
+                                            </th>
+                                            <th class="numbering">번호</th>
+                                            <th class="boardtitle">제목</th>
+                                            <th class="boardwriter">작성자</th>
+                                            <th class="boarddate">작성일</th>
+                                            <th class="">조회수</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    
+                                    <!-- 테이블 가공 (공지사항) -->
+                               		<tbody>
+										<%
+										if(boardLists.isEmpty()){
+										%>
+										<tr>
+											<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
+										<tr>
+										<%
+										}else{
+											int virtualNum = 0;
+											int countNum = 0;
+											for(BoardDTO dto : boardLists){
+												virtualNum = totalCount - (((pageNum - 1) * pageSize) + countNum++);
+										%>
 
-                            <!-- 검색 -->
-                            <form method="get" class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 admin-table-bottom-tool" style="justify-content: flex-end;" >
-                                <select class="selectpicker admin-search" name="searchField" >
-                                    <option value="id">아이디</option>
-                                    <option value="name">이름</option>
-                                    <option value="email">이메일</option>
-                                  </select>
-                                  
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small" placeholder="검색어를 입력하세요" 
-                                    	aria-label="Search" aria-describedby="basic-addon2" name="searchWord">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="submit">
-                                            <i class="fas fa-search fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+										<tr>
+											<td><input type="checkbox" class="form-check-input flex-shrink-0" style="font-size: 1.375em;" name="chk" value="<%= dto.getNum() %>"></td>
+											<td onclick="location.href='ad_boardView.jsp?cate=<%= cate %>&num=<%= dto.getNum() %>'"><%= virtualNum %></td>
+											<td onclick="location.href='ad_boardView.jsp?cate=<%= cate %>&num=<%= dto.getNum() %>'"><%= dto.getTitle() %></td>
+											<td onclick="location.href='ad_boardView.jsp?cate=<%= cate %>&num=<%= dto.getNum() %>'"><%= dto.getName() %></td>
+											<td onclick="location.href='ad_boardView.jsp?cate=<%= cate %>&num=<%= dto.getNum() %>'"><%= dto.getPostdate() %></td>
+											<td onclick="location.href='ad_boardView.jsp?cate=<%= cate %>&num=<%= dto.getNum() %>'"><%= dto.getVisitcount() %></td>
+										</tr>
+										<%
+											}
+										}
+										%>
+									</tbody>
+                                    
+                                </table>
+								</form>
+								
+								
+								<!-- 검색 -->
+			                    <form class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 admin-table-bottom-tool" method="get" style="justify-content: flex-end;">
+			                    	<input type="hidden" name="cate" value="<%= cate %>"/>
+			                        <select class="selectpicker admin-search" name="searchField">
+			                            <option value="title">제목</option>
+										<option value="id">작성자</option>
+			                          </select>
+			                          
+			                        <div class="input-group">
+			                            <input type="text" class="form-control bg-light border-0 small" name="searchWord" placeholder="검색어를 입력하세요" aria-label="Search" aria-describedby="basic-addon2">
+			                            <div class="input-group-append">
+			                                <button class="btn btn-primary" type="submit">
+			                                    <i class="fas fa-search fa-sm"></i>
+			                                </button>
+			                            </div>
+			                        </div>
+			                    </form>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 버튼 -->
                     <div class="board-btn-group01">
                         <ul class="d-flex justify-content-end">
-                         <!--    <li><button type="button" class="btn btn-outline-danger">회원삭제</button></li> -->
+                            <li><button type="button" class="btn btn-outline-secondary" id="deletebtn">삭제</button></li>
+                            <li><button type="button" class="btn btn-outline-primary" onclick="location.href='ad_boardWrite.jsp?cate=<%= cate %>';">작성</button></li>
                         </ul>
                     </div>
-                    <!-- 페이지 번호 -->
+                    
+					<!-- 페이지 번호 -->
 					<div class="row mt-3">
-	                <div class="col">
-	                	<ul class="pagination justify-content-center">
-		                	<%= BoardPage.pagingStr(totalCount, pageSize,
-		        				blockPage, pageNum, request.getRequestURI()) %>
-	                	</ul>
-	                </div>
+		                <div class="col">
+		                	<ul class="pagination justify-content-center">
+			                	<%= BoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, cateUrl, searchField, searchWord) %>
+		                	</ul>
+		                </div>
 	                </div>
                 </div>
                 <!-- /.container-fluid -->
+
             </div>
             <!-- End of Main Content -->
 
@@ -468,8 +486,6 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
-
-
 
     <!-- BOK table first checkbox - All checked -->
     <script src="js/motion.js"></script>
