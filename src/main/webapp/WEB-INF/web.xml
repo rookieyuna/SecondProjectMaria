@@ -42,15 +42,15 @@
   </context-param>
   <context-param>
     <param-name>MariaDBURL</param-name>
-    <param-value>jdbc:mariadb://127.0.0.1:3306/secondpj_db</param-value>
+    <param-value>jdbc:mariadb://127.0.0.1:3306/secondpj</param-value>
   </context-param>
   <context-param>
     <param-name>MariaDBId</param-name>
-    <param-value>secondpj_user</param-value>
+    <param-value>secondpj</param-value>
   </context-param>
   <context-param>
     <param-name>MariaDBPwd</param-name>
-    <param-value>1234</param-value>
+    <param-value>Kosmo99!!</param-value>
   </context-param>
     
       <!-- 게시판 페이징 처리를 위한 파라미터 추가 -->

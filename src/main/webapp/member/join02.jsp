@@ -253,14 +253,10 @@
 						<select name="last_email_check2" onchange="domainInput(this);" class="pass" id="last_email_check2" >
 							<option selected="" value="">선택해주세요</option>
 							<option value="직접입력" >직접입력</option>
-							<option value="empal.com" >empal.com</option>
-							<option value="empas.com" >empas.com</option>
-							<option value="freechal.com" >freechal.com</option>
-							<option value="hanafos.com" >hanafos.com</option>
-							<option value="hanmail.net" >hanmail.net</option>
-							<option value="hotmail.com" >hotmail.com</option>
-							<option value="nate.com" >nate.com</option>
+							<option value="gmail.com" >gmail.com</option>
 							<option value="naver.com" >naver.com</option>
+							<option value="hanmail.net" >hanmail.net</option>
+							<option value="nate.com" >nate.com</option>
 						</select>
 	 
 						<input type="checkbox" name="open_email" value="1">

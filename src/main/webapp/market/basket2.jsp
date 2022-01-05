@@ -84,6 +84,7 @@ function goOrder(){
 				
 				
 				<form name="orderFrm" id="form1" action="">
+				<input type="hidden" name="product_no" value="${dto.product_no }"/>
 				<table cellpadding="0" cellspacing="0" border="0" class="basket_list" style="margin-bottom:50px;">
 					<colgroup>
 						<col width="7%" />
@@ -118,8 +119,8 @@ function goOrder(){
 						</c:when>
 						<c:otherwise>
 							<tr>
-								<td><input type="checkbox" name="" value="" />
-								<input type="hidden" name="product_no" value="${dto.product_no }"/></td>
+								<td>1
+								</td>
 								<td><img src="../images/market/${dto.product_sfile }" width="50px" height="50px"/></td>
 								<td>${ dto.product_name }</td>
 								<td><fmt:formatNumber value="${ dto.price }" pattern="#,###"/>원

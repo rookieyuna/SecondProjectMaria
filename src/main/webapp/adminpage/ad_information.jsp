@@ -32,8 +32,8 @@
 	
 	if(pageTemp != null && !pageTemp.equals("")) pageNum = Integer.parseInt(pageTemp);
 	
-	int start = (pageNum - 1) * pageSize + 1;
-	int end = pageNum * pageSize;
+	int start = (pageNum - 1) * pageSize;
+	int end = pageSize;
 	param.put("start", start);
 	param.put("end", end);
 	
@@ -83,7 +83,7 @@ $(function(){
 		if($("input:checkbox[name=chk]:checked").length == 0){
 			alert("삭제할 항목을 체크해주세요");
 		}else{
-			$('#cleanlist').attr("action","/SecondProject/adminpage/ad_boardCheckingDeleteProcess.jsp").submit();			
+			$('#cleanlist').attr("action","/adminpage/ad_boardCheckingDeleteProcess.jsp").submit();			
 		}
 	})  		
 });

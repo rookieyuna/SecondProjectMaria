@@ -83,7 +83,7 @@
 					<div class="market_left">	
 					
 						<img src="../images/market/${boardList.product_sfile }" width="300px" height="200px"/>
-						<p class="plus_btn"><a href=""><img src="../images/market/plus_btn.gif" /></a></p>
+					<!--	<p class="plus_btn"><a href=""><img src="../images/market/plus_btn.gif" /></a></p> -->
 					</div>
 					<div class="market_right">
 					<!-- 장바구니에 저장할 데이터 파라미터 전달용 -->

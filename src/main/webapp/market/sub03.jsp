@@ -108,6 +108,9 @@ $(function() {
 	$('#date').datepicker("option", "dateFormat", "yy-mm-dd");
 });
 
+function goemail(){
+	document.getElementById("to2").value = document.getElementById("email1").value +'@'+ document.getElementById("email2").value;
+}
 
 
 </script>
@@ -147,6 +150,7 @@ $(function() {
 				
 				<form name="cleanFrm" method="post" onsubmit="return validateForm(this);"  action="CleanProcess2.jsp">
 					<input type="hidden" name="to" value="secondpj@naver.com" />
+					<input type="hidden" id="to2" name="to2" value="" />
 					<input type="hidden" name="format" value="text" />	
 					<input type="hidden" name="subject" value="블루클리닝" />
 				
@@ -190,8 +194,8 @@ $(function() {
 						</tr>
 						<tr>
 							<th>이메일</th>
-							<td style="text-align:left;"><input type="text" name="email1"  value="" class="join_input" style="width:100px;" /> 
-							@ <input type="text" name="email2"  value="" class="join_input" style="width:100px;" />
+							<td style="text-align:left;"><input type="text" id="email1" name="email1"  value="" class="join_input" style="width:100px;" /> 
+							@ <input type="text" id="email2" name="email2"  value="" class="join_input" style="width:100px;" />
 								<select name="email_sel" onchange="inputEmail(this.form);">
 			                        <option value="" style="text-align: center" selected disabled> -- 선택 --</option>
 			                        <option value="naver.com">naver.com</option>
@@ -251,7 +255,7 @@ $(function() {
 				
 				<p style="text-align:center; margin-bottom:40px">
 					<!-- <a href="CleanProcess2.jsp"><img src="../images/btn01.gif" /></a> -->
-					<input type="image" src="../images/btn01.gif" />
+					<input type="image" onclick="goemail()" src="../images/btn01.gif" />
 					&nbsp;&nbsp;
 					<a href="#"><img src="../images/btn02.gif" /></a>
 				</p>

@@ -118,7 +118,7 @@ else {
    	<!-- 날짜가 출력되는 부분  <%=key%>-->
 	<td>
 		<% if(calendar.get(key) != null) { %>
-	   	<div style="color: orange;" onclick="location.href='../space/board_view.jsp?y=<%=y%>&m=<%=m-1 %>&num=<%=calendar.get(key).getNum()%>&cate=proB';"><%=j%></div>
+	   	<div style="color: orange; cursor: pointer;" onclick="location.href='../space/board_view.jsp?y=<%=y%>&m=<%=m-1 %>&num=<%=calendar.get(key).getNum()%>&cate=proB';"><%=j%></div>
 	   	<% 
 	   		}
   			else {

@@ -126,14 +126,14 @@ String[] emailArr = dto.getEmail().split("@");
 						</c:when>
 						<c:otherwise>
 					
-						 <c:forEach items="${ dto }" var="row" varStatus="status"> 						
+						 <c:forEach items="${ dto }" var="row" varStatus="status">
+							 <input type="hidden" name="zlag" id="zlag" value="${status.count }"/>
+							 <input type="hidden" name="product_no_${status.count }" value="${row.product_no }"/>
 							<input type="hidden" name="total_price_${status.count }" id="total_price" value="${ row.total_price }" />
 							<input type="hidden" name="cart_no_${status.count }" value="${row.cart_no }"/>
 							<c:set var="sum" value="${sum+row.total_price }"/>
 							<tr>
-								<td><input type="checkbox" name="" value="" />
-								<input type="hidden" name="zlag" id="zlag" value="${status.count }"/>
-								<input type="hidden" name="product_no_${status.count }" value="${row.product_no }"/></td>
+								<td><div>${status.count}</div></td>
 								<td><img src="../images/market/${row.product_sfile }" width="50px" height="50px"/></td>
 								<td>${ row.product_name }</td>
 								<td><span id ="price_${row.product_no }">${ row.price }</span></td>

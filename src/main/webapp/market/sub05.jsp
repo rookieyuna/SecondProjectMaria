@@ -122,6 +122,11 @@ $(function() {
 	$('#date').datepicker();
 	$('#date').datepicker("option", "dateFormat", "yy-mm-dd");
 });
+
+function goemail(){
+	document.getElementById("to2").value = document.getElementById("email1").value +'@'+ document.getElementById("email2").value;
+}
+
 </script>
  <body>
 	<center>
@@ -169,6 +174,7 @@ $(function() {
 				<form name="expFrm" method="post" onsubmit="return validateForm(this);" action="ExProcess.jsp">
 					<!-- 숨김처리하여 폼값으로 전송할 메일 수신자(관리자 메일), 출력방식, 메일 제목 -->
 					<input type="hidden" name="to" value="secondpj@naver.com" />
+					<input type="hidden" id="to2" name="to2" value="" />
 					<input type="hidden" name="subject" value="체험 학습 신청" />
 				<table class="con_table" style="width:100%; padding:0; border-spacing:0; border-collapse: separate;">
 					<colgroup>
@@ -230,8 +236,8 @@ $(function() {
 						<tr>
 							<th>이메일</th>
 							<td style="text-align:left;">
-								<input type="text" name="email1"  value="" class="join_input" style="width:100px;" /> @ 
-								<input type="text" name="email2"  value="" class="join_input" style="width:100px;" />
+								<input type="text" id="email1" name="email1"  value="" class="join_input" style="width:100px;" /> @ 
+								<input type="text" id="email2" name="email2"  value="" class="join_input" style="width:100px;" />
 								<select name="email_sel" onchange="inputEmail(this.form);">
 			                        <option value="" style="text-align: center" selected disabled> -- 선택 -- </option>
 			                        <option value="naver.com">naver.com</option>
@@ -272,7 +278,7 @@ $(function() {
 					</tbody>
 				</table>
 				<p style="text-align:center; margin-bottom:40px">
-					<input type="image" src="../images/btn01.gif" />&nbsp;&nbsp;
+					<input type="image" onclick="goemail()" src="../images/btn01.gif" />&nbsp;&nbsp;
 					<a href="#"><img src="../images/btn02.gif" /></a></p>
 				</form>
 			</div>

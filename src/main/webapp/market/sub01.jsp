@@ -71,6 +71,8 @@
 					<p class="location"><img src="../images/center/house.gif" />&nbsp;&nbsp;열린장터&nbsp;>&nbsp;수아밀 제품 주문<p>
 				</div>
 				
+			<div class="custom_board">
+				<div class="custom_board_wrap">
 				<table cellpadding="0" cellspacing="0" border="0" class="market_board01">
 					<colgroup>
 						<col width="5%" />
@@ -143,12 +145,16 @@
 						</c:choose>
 					</table>
 
-					<table width="90%">
-						<tr align="center">
-							<td>${ map.pagingImg }</td>
-						</tr>
-					</table>
+					<div class="boardTool">
+							<div class="tool_Paging">
+								<ul>
+									${map.pagingImg}
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
+			</div>
 		</div>
 		<%@ include file="../include/quick.jsp" %>
 	</div>

@@ -318,35 +318,37 @@ function validateForm(form) {
                                     <!-- 테이블 가공 (공지사항 작성하기) -->
                                		<form name="writeFrm" method="post" enctype="multipart/form-data"
 									action="../adminpage/ad_suaWrite.do" onsubmit="return validateForm(this);">
+									
+									
 									<table border="1" width="90%">
 										<tr>
-											<td>상품명</td>
+											<th class="text-center" style="vertical-align:middle;">상품명</th>
 											<td>
-												<input type="text" name="product_name" style="width: 70%;"/>
+												<input type="text" class="form-control" style="width:500px;" name="product_name" style="width: 70%;"/>
 											</td>
 										</tr>
 										<tr>
-											<td>상품설명</td>
+											<th class="text-center" style="vertical-align:middle;">상품설명</th>
 											<td>
-												<textarea name="product_info" style="width:70%; height: 100px;"></textarea>
+												<textarea name="product_info" class="form-control" style="width:70%; height: 100px;"></textarea>
 											</td>
 										</tr>
 										<tr>
-											<td>가격</td>
+											<th class="text-center" style="vertical-align:middle;">가격</th>
 											<td>
-												<input type="text" name="price" style="width: 150px;"/>
+												<input type="text" class="form-control" name="price" style="width: 150px;"/>
 											</td>
 										</tr>
 										<tr>
-											<td>적립금</td>
+											<th class="text-center" style="vertical-align:middle;">적립금</th>
 											<td>
-												<input type="text" name="milage" style="width: 150px;"/>
+												<input type="text" class="form-control" name="milage" style="width: 150px;"/>
 											</td>
 										</tr>
 										<tr>
-											<td>첨부파일</td>
+											<th class="text-center" style="vertical-align:middle;">첨부파일</th>
 											<td>
-												<input type="file" name="product_ofile" />
+												<input type="file" class="form-control" name="product_ofile" />
 											</td>
 										</tr>
 									</table>

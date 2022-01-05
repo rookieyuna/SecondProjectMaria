@@ -331,14 +331,14 @@ function validateForm(form) {
 											<th class="text-center" 
 												style="vertical-align:middle;">작성자</th>
 											<td>
-												<input type="text" class="form-control" style="width:100px;" name="name" value="${dto.name }"/>
+												<input type="text" class="form-control" style="width:100px;" name="name" value="${dto.name }" readonly/>
 											</td>
 										</tr>
 										<tr>
 											<th class="text-center" 
 												style="vertical-align:middle;">이메일</th>
 											<td>
-												<input type="text" class="form-control" style="width:400px;" name="email" value="${dto.email }"/>
+												<input type="text" class="form-control" style="width:400px;" name="email" value="${dto.email }" readonly/>
 											</td>
 										</tr>
 										<%-- <tr>
@@ -377,12 +377,14 @@ function validateForm(form) {
                         <ul class="d-flex justify-content-end">
                             <li><button type="submit" class="btn btn-outline-success">수정완료</button></li>
                             <li><button type="reset" class="btn btn-dark">다시쓰기</button></li>
-                            <li><button type="button" class="btn btn-outline-primary" 
-                            	onclick="location.href='<c:choose>
-									                    	<c:when test="${dto.category eq 'stafB'}">ad_staff.do?cate=</c:when>
-									                    	<c:otherwise>ad_guardian.do?cate=</c:otherwise>
-		                    							</c:choose>
-		                    							${dto.category }';">목록보기</button></li>
+                            <c:choose>
+                            	<c:when test="${dto.category eq 'stafB'}">
+                            		<li><button type="button" class="btn btn-outline-primary" onclick="location.href=ad_staff.do?cate=stafB">목록보기</button></li>
+								</c:when>
+								<c:otherwise>
+									<li><button type="button" class="btn btn-outline-primary" onclick="location.href=ad_guardian.do?cate=guardB">목록보기</button></li>
+		                    	</c:otherwise>
+		                    </c:choose>	
                         </ul>
                     </div>
 					

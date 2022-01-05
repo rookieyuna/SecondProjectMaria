@@ -264,7 +264,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_member.jsp">
+                        	<a href="/adminpage/ad_member.jsp">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -286,7 +286,7 @@
                         </div>
 						
 						<div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_notice.jsp?cate=notB">
+                        	<a href="/adminpage/ad_notice.jsp?cate=notB">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -307,7 +307,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_program.jsp?cate=proB">
+                        	<a href="/adminpage/ad_program.jsp?cate=proB">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -329,7 +329,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_freeboard.jsp?cate=freeB">
+                        	<a href="/adminpage/ad_freeboard.jsp?cate=freeB">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -350,7 +350,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_photo.jsp?cate=photoB">
+                        	<a href="/adminpage/ad_photo.jsp?cate=photoB">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -372,7 +372,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_information.jsp?cate=infoB">
+                        	<a href="/adminpage/ad_information.jsp?cate=infoB">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -394,7 +394,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_staff.do?cate=stafB">
+                        	<a href="/adminpage/ad_staff.do?cate=stafB">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -416,7 +416,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_staff.do?cate=guardB">
+                        	<a href="/adminpage/ad_staff.do?cate=guardB">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -437,7 +437,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_suaRegist.do">
+                        	<a href="/adminpage/ad_suaRegist.do">
                             <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -459,7 +459,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_sOrder.do">
+                        	<a href="/adminpage/ad_sOrder.do">
                             <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -480,7 +480,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_requst.do">
+                        	<a href="/adminpage/ad_requst.do">
                             <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -501,7 +501,7 @@
                         </div>
                         
                         <div class="col-xl-6 col-md-6 mb-4">
-                        	<a href="/SecondProject/adminpage/ad_experience.do">
+                        	<a href="/adminpage/ad_experience.do">
                             <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">

@@ -40,14 +40,14 @@
 	if(pageTemp != null && !pageTemp.equals("")) pageNum = Integer.parseInt(pageTemp);
 	
 	if(!cate.equals("photoB")){
-		int start = (pageNum - 1) * pageSize + 1;
-		int end = pageNum * pageSize;
+		int start = (pageNum - 1) * pageSize;
+		int end = pageSize;
 		param.put("start", start);
 		param.put("end", end);	
 	}else{
 		pageSize = 9;
-		int start = (pageNum - 1) * pageSize + 1;
-		int end = pageNum * pageSize;
+		int start = (pageNum - 1) * pageSize;
+		int end = pageSize;
 		param.put("start", start);
 		param.put("end", end);
 	}

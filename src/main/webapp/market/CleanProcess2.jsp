@@ -54,7 +54,12 @@ if (iResult == 1) {
 Map<String, String> emailInfo = new HashMap<String, String>();
 emailInfo.put("from", request.getParameter("from")); 			//보내는 사람
 emailInfo.put("to", request.getParameter("to")); 				//받는 사람
-emailInfo.put("subject", request.getParameter("subject")); 		//제목
+emailInfo.put("subject", "블루클리닝 견적내역 발송드립니다"); 		//제목
+
+Map<String, String> emailInfo1 = new HashMap<String, String>();
+emailInfo1.put("from", request.getParameter("from")); 			//보내는 사람
+emailInfo1.put("to", request.getParameter("to2")); 				//받는 사람
+emailInfo1.put("subject", "블루클리닝 견적내역 발송드립니다");
 
 String htmlContent = ""; //HTML용으로 변환된 내용을 담을 변수
 try {
@@ -91,9 +96,13 @@ htmlContent = htmlContent.replace("__others__", others);
 emailInfo.put("content", htmlContent);
 emailInfo.put("format", "text/html;charset=UTF-8");
 
+emailInfo1.put("content", htmlContent);
+emailInfo1.put("format", "text/html;charset=UTF-8");
+
 try {
 	NaverSMTP smtpServer = new NaverSMTP(); //메일 전송 클래스 생성
 	smtpServer.emailSending(emailInfo); //전송
+	smtpServer.emailSending(emailInfo1);
 	/* out.print("이메일 전송 성공");  */
 	request.setAttribute("EmailSuccess", "이메일 전송 성공");
 	request.getRequestDispatcher("sub03.jsp").forward(request, response);

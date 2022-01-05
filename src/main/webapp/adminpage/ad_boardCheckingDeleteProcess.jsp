@@ -6,10 +6,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String[] bd_no = request.getParameterValues("chk");
+
 	String cate = request.getParameter("cate");
 	
 	BoardDAO dao = new BoardDAO();
-	int res = dao.deletePost(bd_no); 
+	int res = dao.deletePost(bd_no);
+	
 	dao.close();
 	
 	if(res == bd_no.length){
